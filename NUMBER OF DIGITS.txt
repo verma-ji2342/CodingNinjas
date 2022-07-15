@@ -1,0 +1,8 @@
+int count(int n){
+    //write your code here
+    static int k=0;
+    if(n == 0) return 0;
+    else {
+        return count(n/10)+1;
+    }
+}

@@ -1,0 +1,11 @@
+double geometricSum(int k) {
+    // Write your code here
+    static double f = 1 ;
+    if(k == 0) return 1;
+    else {
+        double r;
+        r = geometricSum(k-1);
+        f *= 2;
+        return (1/f) + r ;
+    }
+}
