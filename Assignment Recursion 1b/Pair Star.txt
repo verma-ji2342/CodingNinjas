@@ -1,0 +1,34 @@
+// Change in the given string itself. So no need to return or print the changed string.
+#include <cstring>
+
+// 0	1	2	3	4	5	6	7
+//     					y	y
+void solve(char input[], int size){
+    
+    if (size==0){return;}
+    
+    if(input[0] == input[1]){
+        for(int i=size ; i>=1 ; i--){
+            
+            input[i] = input[i-1];
+            
+        }
+        input[size+1] = '\0';
+        input[1] = '*';
+        size++;
+        // cout<<input[1];
+    }
+    
+    solve(input+1, size-1);
+    
+}
+
+void pairStar(char input[]) {
+
+    if(input[0] == '\0') return ;
+    
+    int size = strlen(input);
+    
+    solve(input, size);
+
+}
