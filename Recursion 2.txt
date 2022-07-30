@@ -1,0 +1,716 @@
+RECURSION 2
+
+REPLACE CHARACTER RECURSIVELY
+void replaceCharacter(char input[], char c1, char c2) {
+  
+    if(input[0]=='\0')
+        return;
+    if(input[0]!=c1)
+        replaceCharacter(input+1,c1,c2);
+    else
+    {
+        input[0]=c2;
+        replaceCharacter(input+1,c1,c2);
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
+
+
+REPLACE DUPLICATE RECURSIVELY
+
+void removeConsecutiveDuplicates(char *input) {
+
+    if(input[0]=='\0')
+        return;
+    if(input[0]!=input[1])
+        removeConsecutiveDuplicates(input+1);
+    else
+    {
+        for(int i=0;input[i]!='\0';i++)
+        {
+            input[i]=input[i+1];
+        }
+        removeConsecutiveDuplicates(input);
+        
+    }
+    
+
+}
+
+-------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
+MEARGE SORT
+
+
+#include<iostream>
+using namespace std;
+void merge(int *arr, int st, int mid, int e){
+    int i, j, k, temp[e - st + 1];
+    i = st;
+    j = mid + 1;
+    k = 0;
+    while(i <= mid && j <= e){
+        if(arr[i] < arr[j]){
+            temp[k] = arr[i];
+            //cout << "h1" << endl;
+            i++;
+        }
+        else{
+            temp[k] = arr[j];
+            //cout << "h2" << endl;
+            j++;
+        }
+        k++;
+    }
+    
+    while(i <= mid){
+        temp[k] = arr[i];
+        //cout << "h3" << endl;
+        i++;
+        k++;
+    }
+    
+    while(j <= e){
+        temp[k] = arr[j];
+        //cout << "h4" << endl;
+        j++;
+        k++;
+    }
+    
+    
+    for(i = st; i <= e; i++){
+        arr[i] = temp[i - st];
+    }
+}
+
+void mergeSort1(int *arr,int st,int e){
+    if(st < e){
+        int mid = (st + e)/2;
+        mergeSort1(arr, st, mid);
+        mergeSort1(arr, mid + 1, e);
+        merge(arr, st, mid, e);
+    }
+}
+
+void mergeSort(int input[], int size){
+	// Write your code here
+    int start = 0, end = size - 1;
+    mergeSort1(input, start, end);
+}
+
+
+-------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
+QUICK SORT
+
+void swap(int* a, int* b)
+{
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int Partition(int a[], int low, int high)
+{
+    int pivot, index, i;
+    index = low;
+    pivot = high;
+
+    for(i = low; i < high; i++) {
+        if(a[i] < a[pivot]) {
+            swap(&a[i], &a[index]);
+            index++;
+        }
+    }
+
+    swap(&a[pivot], &a[index]);
+
+    return index;
+}
+int QuickSort(int a[], int low, int high)
+{
+    int pindex = high;
+    if(low < high) {
+        int pindex = Partition(a, low, high);
+        
+        QuickSort(a, low, pindex - 1);
+        QuickSort(a, pindex + 1, high);
+    }
+    return 0;
+}
+void quickSort(int input[], int size) {
+  /* Don't write main().
+     Don't read input, it is passed as function argument.
+     Change in the given array itself.
+     Taking input and printing output is handled automatically.
+  */
+    QuickSort(input, 0, size - 1);
+}
+
+
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+Return Keypad Code
+
+#include <string>
+using namespace std;
+
+int keypad(int num, string output[]){
+    /* Insert all the possible combinations of the integer number into the output string array. You do not need to
+    print anything, just return the number of strings inserted into the array.
+    */
+  if(num==0 || num==1)
+  {
+    output[0]="";
+    return 1;
+  }
+  int sos=keypad(num/10,output);
+  if(num%10==0 || num%10==1)
+  {
+    return sos;
+  }
+  else if(num%10==2)
+  {
+    for(int i=0;i+2*sos<3*sos;i++)
+    {
+    output[i+sos]=output[i]+'b';
+     output[i+2*sos]=output[i]+'c';
+     output[i]=output[i]+'a';
+    }
+    return 3*sos;
+  }
+  else if(num%10==3)
+  {
+    for(int i=0;i+2*sos<3*sos;i++)
+    {
+    output[i+sos]=output[i]+'e';
+     output[i+2*sos]=output[i]+'f';
+     output[i]=output[i]+'d';
+    }
+    return 3*sos;
+  }
+  else if(num%10==4)
+  {
+    for(int i=0;i+2*sos<3*sos;i++)
+    {
+    output[i+sos]=output[i]+'h';
+     output[i+2*sos]=output[i]+'i';
+     output[i]=output[i]+'g';
+    }
+    return 3*sos;
+  }
+  else if(num%10==5)
+  {
+    for(int i=0;i+2*sos<3*sos;i++)
+    {
+    output[i+sos]=output[i]+'k';
+     output[i+2*sos]=output[i]+'l';
+     output[i]=output[i]+'j';
+    }
+    return 3*sos;
+  }
+  else if(num%10==6)
+  {
+    for(int i=0;i+2*sos<3*sos;i++)
+    {
+    output[i+sos]=output[i]+'n';
+     output[i+2*sos]=output[i]+'o';
+     output[i]=output[i]+'m';
+    }
+    return 3*sos;
+  }
+  else if(num%10==7)
+  {
+    for(int i=0;i+3*sos<4*sos;i++)
+    {
+    output[i+sos]=output[i]+'q';
+     output[i+2*sos]=output[i]+'r';
+      output[i+3*sos]=output[i]+'s';
+     output[i]=output[i]+'p';
+    }
+    return 4*sos;
+  }
+  
+  else if(num%10==8)
+  {
+    for(int i=0;i+2*sos<3*sos;i++)
+    {
+    output[i+sos]=output[i]+'u';
+     output[i+2*sos]=output[i]+'v';
+     output[i]=output[i]+'t';
+    }
+    return 3*sos;
+  }
+  else if(num%10==9)
+  {
+    for(int i=0;i+3*sos<4*sos;i++)
+    {
+    output[i+sos]=output[i]+'x';
+     output[i+2*sos]=output[i]+'y';
+      output[i+3*sos]=output[i]+'z';
+     output[i]=output[i]+'w';
+    }
+    return 4*sos;
+  }
+}
+
+---------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+void print(int num, string output)
+{   string s[8] = {"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    
+ if(num == 0)
+    {   cout<<output<<"\n";
+        return;
+    }   
+ for(int k = 0;k<s[(num%10)-2].length();k++)
+ {   
+     print(num/10 ,s[(num%10)-2][k]+output);
+ }
+ 
+ 
+    
+}
+
+void printKeypad(int num){
+    /*
+    Given an integer number print all the possible combinations of the keypad. You do not need to return anything just print them.
+    */
+    
+    print(num,"");    
+}
+
+-------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+CHECK AB
+
+bool solve(char input[]) {
+    if(input[0]=='\0')
+        return true; // Write your code here
+    bool so;
+    if(input[0]=='a'&&(input[1]=='\0'||input[1]=='a'))
+        so=solve(input+1);
+    else if(input[0]=='a'&&(input[1]=='b'&&input[2]=='b'))
+        so=solve(input+1);
+    else if(input[0]=='b'&&input[1]=='b'&&(input[2]=='\0'||input[2]=='a'))
+        so= solve(input+2);
+    else
+        return false;
+    return so;
+}
+
+
+bool checkAB(char input[]) {
+    if(input[0]=='\0')
+        return true; 
+    else if (input[0] != 'a')
+        return false;
+    return solve(input);
+}
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+STAIRCASE
+
+int staircase(int n)
+{
+    /* Don't write main().
+     *  Don't read input, it is passed as function argument.
+     *  Return output and don't print it.
+     *  Taking input and printing output is handled automatically.
+     */
+    if (n == 1 || n == 0)
+        return 1;
+    else if (n == 2)
+        return 2;
+    else
+        return staircase(n - 3) + staircase(n - 2) + staircase(n - 1);
+}
+
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+BINARY SEARCH
+// input - input array
+// size - length of input array
+// element - value to be searched
+int B(int a[],int s,int e, int i)
+{
+    if(s>e)
+        return -1;
+    int mid= (s+e)/2;
+    if(a[mid]==i) return mid;
+    if(a[mid]>i) return B(a,s,mid-1,i);
+     if(a[mid]<i) return B(a,mid+1,e,i);
+}
+int binarySearch(int input[], int size, int element) {
+    // Write your code here
+ 
+    int start =0;
+    int end= size -1;
+     int ans =B(input ,start,end,element);
+    return ans;
+}
+
+-------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+
+
+RETURN SUBSET OF AN ARREY
+
+int subset(int input[], int n, int output[][20]) {
+    // Write your code here
+ if(n<=0) {
+      output[0][0]=0;
+      return 1;
+  }
+
+  int smallOutput = subset(input+1,n-1,output);
+  for(int i=0;i<smallOutput;i++) {
+      int col = output[i][0] +1;
+     output[i+smallOutput][0] = col;
+       output[i+smallOutput][1] = input[0];
+      for(int j=2; j<col+1;j++) {
+        output[i+smallOutput][j] = output[i][j-1];
+      }
+
+  }
+
+  return 2*smallOutput;
+}
+
+-------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
+
+
+PRINT SUBSET OF AN ARRAY
+void help(int input[],int startindex,int s,int output[],int m)
+{
+    //if all the elemts have been included 
+    if(startindex==s)
+    {
+        //output array is filled we just need to print it's each element
+        for(int i=0;i<m;i++)
+        {
+            cout<<output[i]<<" ";
+        }
+        cout<<endl;
+        return ;
+    }
+    
+    int helpo[1000];
+    int helps=0;
+    help(input,startindex+1,s,output,m);
+    int i;
+    for( i=0;i<m;i++)
+    {
+        helpo[i]=output[i];
+    }
+    helpo[i]=input[startindex];
+    help(input,startindex+1,s,helpo,m+1);
+}
+void printSubsetsOfArray(int input[], int size) {
+	// Write your code here
+    int output[1001];
+    int m=0;
+    help(input,0,size,output,m);
+}
+
+-------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
+
+
+RETURN SUBSET SUM TO K
+
+int subsetSumToK(int input[], int n, int startIndex, int output[][50], int k)
+{
+    if (startIndex == n)
+    {
+        if (k == 0)
+        {
+            output[0][0] = 0;
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    int smallOutput1[1000][50], smallOutput2[1000][50];
+    int size1 = subsetSumToK(input, n, startIndex + 1, smallOutput1, k);
+    int size2 = subsetSumToK(input, n, startIndex + 1, smallOutput2, k - input[startIndex]);
+    int row = 0;
+    for (int i = 0; i < size1; i++)
+    {
+        for (int j = 0; j <= smallOutput1[i][0]; j++)
+        {
+            output[row][j] = smallOutput1[i][j];
+        }
+        row++;
+    }
+    for (int i = 0; i < size2; i++)
+    {
+        output[row][0] = smallOutput2[i][0] + 1;
+        output[row][1] = input[startIndex];
+        for (int j = 1; j <= smallOutput2[i][0]; j++)
+        {
+            output[row][j + 1] = smallOutput2[i][j];
+        }
+        row++;
+    }
+    return row;
+}
+int subsetSumToK(int input[], int n, int output[][50], int k)
+{
+    return subsetSumToK(input, n, 0, output, k);
+}
+
+
+-------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+
+PRINT SUBSET SUM TO K
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool **dp;
+
+void display(const vector<int> &v)
+{
+    for (int i = v.size() - 1; i >= 0; i--)
+        cout << v[i] << " ";
+    cout << "\n";
+}
+
+void printSubsetsRec(int arr[], int i, int sum, vector<int> &p)
+{
+    if (i == 0 && sum != 0 && dp[0][sum])
+    {
+        p.push_back(arr[i]);
+        if (arr[i] == sum)
+            display(p);
+        return;
+    }
+
+    if (i == 0 && sum == 0)
+    {
+        display(p);
+        return;
+    }
+
+    if (dp[i - 1][sum])
+    {
+        vector<int> b = p;
+        printSubsetsRec(arr, i - 1, sum, b);
+    }
+
+    if (sum >= arr[i] && dp[i - 1][sum - arr[i]])
+    {
+        p.push_back(arr[i]);
+        printSubsetsRec(arr, i - 1, sum - arr[i], p);
+    }
+}
+
+void printSubsetSumToK(int arr[], int n, int sum)
+{
+    if (n == 0 || sum < 0)
+        return;
+
+    dp = new bool *[n];
+    for (int i = 0; i < n; ++i)
+    {
+        dp[i] = new bool[sum + 1];
+        dp[i][0] = true;
+    }
+
+    if (arr[0] <= sum)
+        dp[0][arr[0]] = true;
+
+    for (int i = 1; i < n; ++i)
+        for (int j = 0; j < sum + 1; ++j)
+            dp[i][j] = (arr[i] <= j) ? dp[i - 1][j] || dp[i - 1][j - arr[i]] : dp[i - 1][j];
+    if (dp[n - 1][sum] == false)
+    {
+        cout << " ";
+        return;
+    }
+    vector<int> p;
+    printSubsetsRec(arr, n - 1, sum, p);
+}
+
+
+-------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+
+RETURN ALL Code
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void help(string input, string out, vector<string> &str)
+{
+    if (input.size() == 0)
+    {
+        str.push_back(out);
+        return;
+    }
+    char c1 = (input[0] - 48) + 96;
+    if (input[0] == '0')
+        return;
+    help(input.substr(1), out + c1, str);
+    if (input.size() > 1)
+    {
+        int d = (input[0] - 48) * 10 + (input[1] - 48);
+        if (d > 26)
+            return;
+        char c2 = 96 + d;
+        help(input.substr(2), out + c2, str);
+    }
+}
+
+int getCodes(string input, string output[10000])
+{
+    /*
+    You are given the input text and output string array. Find all possible codes and store in the output string array. Don’t print the codes.
+    Also, return the number of codes return to the output string. You do not need to print anything.
+    */
+    vector<string> str;
+    string out = "";
+    help(input, out, str);
+    for (int i = 0; i < str.size(); i++)
+        output[i] = str[i];
+    int x = str.size();
+    return x;
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+
+PRINT ALL CODE
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void help(string input, string out, vector<string> &str)
+{
+    if (input.size() == 0)
+    {
+        str.push_back(out);
+        return;
+    }
+    char c1 = (input[0] - 48) + 96;
+    if (input[0] == '0')
+        return;
+    help(input.substr(1), out + c1, str);
+    if (input.size() > 1)
+    {
+        int d = (input[0] - 48) * 10 + (input[1] - 48);
+        if (d > 26)
+            return;
+        char c2 = 96 + d;
+        help(input.substr(2), out + c2, str);
+    }
+}
+
+void printAllPossibleCodes(string input)
+{
+
+    vector<string> str;
+    string out = "";
+    help(input, out, str);
+    for (int i = 0; i < str.size(); i++)
+        cout << str[i] << endl;
+}
+
+-----------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+
+
+Return Permutations - String
+
+
+
+#include <string>
+using namespace std;
+void swap(char *x, char *y)
+{
+    char temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+int permute(string a, int l, int r, string output[])
+{
+    int i;
+    static int j = 0, count = 0;
+    if (l == r)
+    {
+        output[j] = a;
+        j++;
+        count++;
+    }
+    else
+    {
+        for (i = l; i <= r; i++)
+        {
+            swap((a[l]), (a[i]));
+            permute(a, l + 1, r, output);
+            swap((a[l]), (a[i]));
+        }
+    }
+    return count;
+}
+
+int returnPermutations(string input, string output[])
+{
+    int len = input.length() - 1;
+    return permute(input, 0, len, output);
+}
+
+
+-------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+
+PRINT PERMUNTATION
+
+#include <iostream>
+#include <string>
+using namespace std;
+void swap(char *x, char *y)
+{
+    char temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+void permute(string a, int l, int r)
+{
+    int i;
+    if (l == r)
+        cout << a << endl;
+    else
+    {
+        for (i = l; i <= r; i++)
+        {
+            swap((a[l]), (a[i]));
+            permute(a, l + 1, r);
+            swap((a[l]), (a[i]));
+        }
+    }
+}
+void printPermutations(string input)
+{
+    int len = input.length() - 1;
+    permute(input, 0, len);
+}
