@@ -1,0 +1,148 @@
+                                   Name : Pranjal Verma
+Note :- 1) If any problem and query related to code.
+        2) if you find better way to solve these problems.
+       
+        ......mail me : pranjal69verma69@gmail.com
+
+----------------------------------------------------------------------------------------------
+
+Find the Unique Element
+
+CODE :- 
+
+int findUnique(int *arr, int n) {
+    // Write your code here
+    if(n == 0){
+        return arr[0];
+    }
+    
+    return findUnique(arr,n-1)^arr[n]; // Here we use bitwise XOR operator 
+}
+
+----------------------------------------------------------------------------------------------
+
+Duplicate in array
+
+CODE :- 
+
+int findDuplicate(int *arr, int n)
+{
+    static int x=n;
+    //Write your code here
+    if(n == 0){
+        return arr[n-1] - (x-2)*(x-1)/2;
+    }
+    
+    return arr[n-1] + findDuplicate(arr,n-1);
+}
+
+----------------------------------------------------------------------------------------------
+
+Array Intersection
+
+CODE :- 
+
+void intersection(int *arr1, int *arr2, int n, int m) 
+{
+    //Write your code here
+    sort(arr1,arr1+n);
+    sort(arr2,arr2+m);
+    int i=0, j=0;
+    while(i<n && j<m){
+        if(arr1[i] < arr2 [j]) i++;
+        else if(arr1[i] > arr2[j]) j++;
+        else {
+            cout<<arr2[j]<<" ";
+            i++;
+            j++;
+        }
+    }
+}
+
+----------------------------------------------------------------------------------------------
+
+Pair sum in array
+
+CODE :- 
+
+int pairSum(int *arr, int n, int num)
+{
+    int count = 0 ;
+	//Write your code here
+    for(int i=0 ; i<n ; i++){
+        for(int j=i+1 ; j<n ; j++){
+            if(arr[i] + arr[j] == num){
+                count++ ;
+            }
+        }
+    }
+    return count ;
+}
+
+----------------------------------------------------------------------------------------------
+
+Triplet sum
+
+CODE :-
+
+int tripletSum(int *arr, int n, int num)
+{
+	//Write your code here
+    sort(arr,arr+n);
+    int count = 0;
+    for(int i=0 ; i<n-2 ; i++){
+        int l=i+1 , h=n-1;
+       while(l<h){
+            if(arr[i]+arr[l]+arr[h]==num){
+                for(int x=l; x<h && arr[x]==arr[l];x++){
+                    count++;   
+                }
+                h--;
+            }
+            else if(arr[l]+arr[h]<num-arr[i]){
+                l++;
+            }
+            else h--;
+        }
+    }
+    return count;
+}
+
+----------------------------------------------------------------------------------------------
+
+Rotate array
+
+CODE :- 
+
+void rotate(int *input, int d, int n)
+{
+    //Write your code here
+    int arr[n], l=0;
+    for(int i=d ; i<n ; i++){
+        arr[l] = input[i];
+        l++;
+    }
+    for(int i=0 ; i<d ; i++){
+        arr[l] = input[i];
+        l++;
+    }
+    for(int i=0 ; i<n ; i++){
+        input[i] = arr[i];
+    }
+}
+
+----------------------------------------------------------------------------------------------
+
+Check Array Rotation
+
+CODE :- 
+
+int arrayRotateCheck(int *input, int size)
+{
+    //Write your code here
+    for(int i=0 ; i<size-1 ; i++){
+        if(input[i] > input[i+1]) return i+1;
+    }
+    return 0;
+}
+

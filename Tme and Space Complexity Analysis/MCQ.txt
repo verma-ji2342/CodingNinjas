@@ -1,0 +1,187 @@
+                                        Name : Pranjal Verma 
+----------------------------------------------------------------------------------------------
+
+Linear Search Worst Case
+
+The Worst case(s) occur in linear search algorithm when -
+
+Ans :- B) Item is the last element in the array
+       D) Item is not in the array at all
+
+------------------------------------------------------------------------------------------------
+
+Linear Search 
+
+The worst case time complexity of Linear search is :
+
+Ans :- A) O(n)
+
+------------------------------------------------------------------------------------------------
+
+Worst Case Time Complexity of Insertion sort
+
+Worst case time complexity of insertion sort is ?
+
+Ans :- B) O(N^2)
+
+----------------------------------------------------------------------------------------------
+
+Worst Case Time complexity of Selection Sort
+
+Worst case time complexity of Selection sort is ?
+
+Ans :- B) O(N^2)
+
+----------------------------------------------------------------------------------------------
+
+
+Efficiency of an Algorithm
+
+Two main measure for the efficiency of an algorithm are :-
+
+Ans :- C) Time and space 
+
+----------------------------------------------------------------------------------------------
+
+
+Theoretical Analysis
+
+In theoretical analysis the time factor when determining the efficiency of algorithm is measured by -
+
+ANs :- C) COunting the number of unit operations 
+
+----------------------------------------------------------------------------------------------
+
+
+Time Complexity
+
+If the number of primary operations of an algorithm that takes an array of size n as input are 3n^2 + 5n. The worst case time complexity of the algorithm will be ?
+
+ANs :- C) O(n^2)
+
+----------------------------------------------------------------------------------------------
+
+
+Time Complexity of Code
+
+What will be the Time Complexity of following code in terms of ‘n’ ?
+
+Refer the code for c++ :-
+
+Ans :- A) O(n) 
+
+----------------------------------------------------------------------------------------------
+
+
+Time Complexity of Code
+
+What will be the Time Complexity of following code in terms of ‘n’ ?
+
+Note : Assume k to be a constant value
+Refer the code in C++ -
+
+Ans :- B) O(n) 
+
+----------------------------------------------------------------------------------------------
+
+
+Operations for merging
+
+For merging two sorted arrays of size m and n into a sorted array of size m+n, we require operations :-
+
+Ans :- B) O(m+n)
+
+----------------------------------------------------------------------------------------------
+
+
+Worst Case Time complexity of Binary Search
+
+Worst case time complexity of Binary Search is ? 
+
+Ans :- D) O(LogN)
+
+----------------------------------------------------------------------------------------------
+
+
+Recurrence for Merge Sort
+
+What is the recurrence relation for merge sort :
+
+Ans :- C) T(n) = 2T(n/2) + O(n)
+
+----------------------------------------------------------------------------------------------
+
+
+Merge sort
+
+What is the time complexity of merge sort :
+
+Ans :- C) O(nlogn)
+
+----------------------------------------------------------------------------------------------
+
+
+What is time complexity
+
+What is the time complexity of following code ?
+
+int multiplyRec(int m, int n){
+    if(n == 1)
+        return m;
+    return m + multiplyRec(m,  n - 1);  
+}
+
+
+Ans :- B) O(n)
+
+----------------------------------------------------------------------------------------------
+
+
+What is time complexity
+
+What is the time complexity of following code ?
+
+int sumOfDigits(int n){
+        int sum;
+        if(n < 10){
+            return n;
+        }
+        sum = (n % 10) + sumOfDigits(n / 10);
+        return sum;
+}
+
+Ans :- A) O(logn) - log is to the base 10
+
+----------------------------------------------------------------------------------------------
+
+
+Fibonacci
+
+What is the time complexity of following code for calculating nth fibonacci number
+
+long fib(int n){
+    if(n == 0 || n == 1){
+         return n;
+    }
+    return fib(n - 1) + fib(n - 2);
+}
+
+Ans :- C) O(2^n) 
+
+----------------------------------------------------------------------------------------------
+
+
+Merge Sort space
+
+The space complexity for merge sort is : 
+
+Ans :- A) O(n)
+
+----------------------------------------------------------------------------------------------
+
+
+Fibonacci
+
+The space complexity for finding nth fibonacci number using recursion is :
+
+Ans :- A) O(n)
