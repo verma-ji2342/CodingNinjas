@@ -1,0 +1,128 @@
+                                                Pranjal Verma Welcomes You :)
+--------------------------------------------------------------------------------------------------------------------------------
+MCQ :)
+--------------------------------------------------------------------------------------------------------------------------------
+
+Recurrence Relation for Tower of Hanoi Problem
+
+The recurrence relation capturing the optimal execution time of the Towers of Hanoi problem with n discs is :
+
+ANS : D) T(n) = 2T(n-1) + 1
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Complexity of different operations in a sorted array.
+
+Which of the following operations is not O(1) for an array of sorted data. You may assume that array elements are distinct.
+
+ANS : B) Delete an element 
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Complexity of a Recurrence Relation
+
+Which one of the following correctly determines the solution of the recurrence relation with T(1) = 1?
+T(n) = 2T(n/2) + Logn
+
+ANS : A) O(n) 
+
+--------------------------------------------------------------------------------------------------------------------------------
+CODES :)
+--------------------------------------------------------------------------------------------------------------------------------
+
+Does s contain t ?
+
+CODE :
+
+bool checksequenece(char large[] , char*small) {
+    if(small[0]=='\0'&&large[0]!='\0')
+                return true;
+    else if(small[0]!='\0'&&large[0]=='\0')
+        return false;
+
+
+          else if(large[0]=='\0'&&small[0]=='\0')
+            return true;
+
+
+        int i=0;
+        for(;large[i]!='\0';i++)
+        {
+            if(large[i]==small[0])
+            {
+                break;
+            }
+        }
+        if(large[i]=='\0')
+            return false;
+
+    return checksequenece(large+i+1,small+1);
+
+}
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Maximum Profit on App
+
+CODE :
+
+#include <bits/stdc++.h>
+int maximumProfit(int budget[], int n) {
+    // Write your code here
+     sort(budget , budget+n);
+    
+    int temp[n];
+    
+    for(int i=0;i<n;i++)
+    {
+        temp[i]=budget[i]*(n-i);
+    }
+     sort(temp,temp +n);
+    
+    return temp[n-1];
+    
+    
+}
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Split Array
+
+CODE :
+
+bool helper(int* arr, int n, int start, int lsum, int rsum) 
+{ 
+  
+    // If reached the end 
+    if (start == n) 
+        return lsum == rsum; 
+  
+    // If divisible by 5 then add to the left sum 
+    if (arr[start] % 5 == 0) 
+        lsum += arr[start]; 
+  
+    // If divisible by 3 but not by 5 
+    // then add to the right sum 
+    else if (arr[start] % 3 == 0) 
+        rsum += arr[start]; 
+  
+    // Else it can be added to any of the sub-arrays 
+    else
+  
+        // Try adding in both the sub-arrays (one by one) 
+        // and check whether the condition satisfies 
+        return helper(arr, n, start + 1, lsum + arr[start], rsum) 
+           || helper(arr, n, start + 1, lsum, rsum + arr[start]); 
+  
+    // For cases when element is multiple of 3 or 5. 
+    return helper(arr, n, start + 1, lsum, rsum); 
+} 
+  
+// Function to start the recursive calls 
+bool splitArray(int* arr, int n) 
+{ 
+    // Initially start, lsum and rsum will all be 0 
+    return helper(arr, n, 0, 0, 0); 
+} 
+
+--------------------------------------------------------------------------------------------------------------------------------
