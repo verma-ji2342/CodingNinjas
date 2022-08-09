@@ -1,0 +1,143 @@
+--------------------------------------------------Welcome to Verma's Repo-------------------------------------------------------------
+
+CODEs
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Find a Node in Linked List
+
+CODE : 
+
+int findNode(Node *head, int n){
+    // Write your code here.
+    if(head == NULL) return -1;
+    if(head->data == n) return 0 ;
+    if(head == NULL && head->data == n) return 0;
+    
+    int x = findNode(head->next, n) ;
+    if(x == -1 ) return -1 ;
+    else return x+1;
+    
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+AppendLastNToFirst
+
+CODE : 
+
+Node *appendLastNToFirst(Node *head, int n)
+{
+    //Write your code here
+    if(head == NULL or n == 0){
+        return head ;
+    }
+    
+    Node *tail = head ;
+    Node *ptr = head ;
+    
+    int length = 1;
+    
+    while(tail->next){
+        tail = tail->next ;
+        length ++;
+    }
+    
+    int count = 1 ;
+    while(count < length - n){
+        ptr = ptr->next ;
+        count ++ ;
+    }
+    
+    tail->next = head ;
+    head = ptr -> next ;
+    ptr ->next = NULL;
+
+    
+    return head;
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Eliminate duplicates from LL
+
+CODE :
+
+Node *removeDuplicates(Node *head) {
+    //Write your code here
+    if(head == NULL) {
+        return head;
+    }
+    
+    Node *temp = head -> next;
+    Node *ptr = head;
+    
+    while(temp){
+        if(temp -> data == ptr -> data) {
+            if(temp -> next == NULL) {
+                ptr -> next = NULL;
+            }
+                temp = temp -> next;
+        } else {
+        	ptr -> next = temp;
+        	ptr = temp;
+        	temp = temp -> next;
+        }
+    }
+    
+    return head;
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Print Reverse LinkedList
+
+CODE :
+
+void printReverse(Node *head)
+{
+    //Write your code here
+    if(head == 0) return ;
+    printReverse(head->next) ;
+    cout<<head->data<<" ";
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Palindrome LinkedList
+
+CODE :
+
+int length(Node *head)
+{
+    if(head == NULL) return 0;
+    else return length (head->next) + 1;
+}
+
+
+bool isPalindrome(Node *head)
+{
+    //Write your code here
+    if(head == NULL || head->next == NULL) return true;
+    Node *front = head ;
+    
+    int i=0;
+    int size = length(head) ;
+    while(front!=NULL && size >=0){
+        Node *back = head ;
+        for(; i < size-1 ; i++){
+            back=back->next ;
+        }
+        if(front->data != back->data){
+            return false ;
+        }
+        size--;
+        i=0 ;
+        front = front->next ;
+    }
+    return true ;
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------
+                                                           THANKYOU
+---------------------------------------------------------------------------------------------------------------------------------------
