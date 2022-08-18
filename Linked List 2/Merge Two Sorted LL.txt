@@ -1,0 +1,75 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Merge Two Sorted LL
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CODE : 
+
+Node *mergeTwoSortedLinkedLists(Node *head1, Node *head2)
+{
+    //Write your code here
+    Node *first = head1 ;
+    Node *second = head2 ;
+    Node *head = NULL ;
+    Node *tail = NULL ;
+    
+    
+    while(first != NULL && second != NULL){
+        
+        if(first->data < second->data){
+            Node *temp = new Node(first->data) ;
+            if(head == NULL){
+                head = temp ;
+                tail = temp ;
+            }
+            else {
+                tail->next = temp ;
+                temp->next = NULL ;
+                tail = temp ;
+            }
+            first = first->next ;
+        }
+        else {
+            Node *temp = new Node(second->data) ;
+            if(head == NULL){
+                head = temp ;
+                tail = temp ;
+            }
+            else {
+                tail->next = temp ;
+                temp->next = NULL ;
+                tail = temp ;
+            }
+            second = second->next ;
+        }
+    }
+    
+    while(first != NULL){
+            Node *temp = new Node(first->data) ;
+            if(head == NULL){
+                head = temp ;
+                tail = temp ;
+            }
+            else {
+                tail->next = temp ;
+                temp->next = NULL ;
+                tail = temp ;
+            }
+            first = first->next ;
+    }
+    
+    while(second != NULL){
+        Node *temp = new Node(second->data) ;
+            if(head == NULL){
+                head = temp ;
+                tail = temp ;
+            }
+            else {
+                tail->next = temp ;
+                temp->next = NULL ;
+                tail = temp ;
+            }
+            second = second->next ;
+    }
+    return head ;
+}
+

@@ -1,0 +1,32 @@
+---------------------------------------------------------------------------------------------------------------------------------------
+Delete every N nodes
+---------------------------------------------------------------------------------------------------------------------------------------
+
+CODE : 
+
+Node *skipMdeleteN(Node *head, int M, int N)
+{
+	// Write your code here
+    if(M==0) return NULL;
+    Node *p = head;
+
+	while(p){
+
+		for(int i=1;i<M and p != NULL;i++) 
+            p = p->next;
+
+		if(p == NULL) 
+            return head;
+
+		Node *t = p->next;
+
+		for(int i=1;i<=N and t != NULL;i++){
+			Node *temp = t;
+			t = t->next;
+			free(temp);
+		}	
+		p->next = t;
+		p = t;
+	}
+	return head;
+}

@@ -1,0 +1,54 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Reverse LL (Recursive)
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CODE : 
+
+class Pair {
+    public :
+    
+    Node *head ;
+    Node *tail ;
+};
+
+Pair reverseLL(Node *head){
+    if(head == NULL || head->next == NULL){
+        Pair ans ;
+        ans.head = head ;
+        ans.tail = head ;
+        return ans ;
+    }
+    
+    Pair smallans = reverseLL(head->next) ;
+    
+    smallans.tail->next = head ;
+    head->next = NULL ;
+    Pair ans ;
+    ans.head = smallans.head ;
+    ans.tail = head ;
+    return ans ;
+}
+
+
+// Node *reverseLinkedListRec(Node *head)
+// {
+//     //Write your code here
+//     if(head == NULL || head->next == NULL){
+//         return head;
+//     }
+    
+//     Node *smallans = reverseLinkedListRec(head->next);
+    
+//     Node *temp = smallans;
+//     while(temp->next != NULL){
+//         temp = temp->next;
+//     }
+    
+//     temp->next = head;
+//     head->next = NULL;
+//     return smallans;
+// }
+
+Node *reverseLinkedListRec(Node *head){
+    return reverseLL(head).head ;
+}
