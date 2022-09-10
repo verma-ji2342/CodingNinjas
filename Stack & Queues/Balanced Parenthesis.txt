@@ -1,0 +1,22 @@
+#include <stack>
+
+bool isBalanced(string expression) 
+{
+    // Write your code here
+    stack<char> s;
+    s.push(expression[0]);
+    for(int i=1 ; expression[i] != '\0' ; i++){
+        if(expression[i] == '(' || expression[i] == '{' || expression[i] == '['){
+            s.push(expression[i]) ;
+        }
+        else {
+            if(expression[i] == ')' && s.top() == '(') s.pop() ;
+            else if(expression[i] == '}' && s.top() == '{') s.pop() ;
+            else if(expression[i] == ']' && s.top() == '[') s.pop() ;
+        }
+    }
+    
+    if(s.empty()) return 1 ;
+    else return 0;
+    
+}

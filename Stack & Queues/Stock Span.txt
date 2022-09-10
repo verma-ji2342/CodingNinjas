@@ -1,0 +1,30 @@
+#include <queue>
+
+int* stockSpan(int *price, int size)  {
+	// Write your code here
+    int *arr = new int[size] ;
+    
+    for (int i = 0; i < size; i++) {
+        // Initialize a variable 'SPAN' = 1
+        // Variable 'SPAN' will store the span for the 'ith' day.
+        int span = 1;
+
+        // Start Iterating over previous prices starting from 'i'-1th day.
+        for (int j = i - 1; j >= 0; j--) {
+            if (price[i] > price[j]) {
+
+                // If today's price is greater than previous price
+                // Increment 'SPAN' variable by 1.
+                span++;
+
+            } else {
+                // Otherwise break since we need only consecutive days.
+                break;   
+            }
+        }
+
+        arr[i] = span;
+    }
+    return arr;
+    // return price ;
+}

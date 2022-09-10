@@ -1,0 +1,31 @@
+pair<TreeNode<int>*,int> helper(TreeNode<int>* root) {
+    
+    int sum = root -> data;
+    TreeNode<int> *ans = root;
+    
+    for(int i = 0 ; i < root -> children.size(); i++) {
+        sum += root -> children[i] -> data;
+    }
+    
+	for(int i = 0 ; i < root -> children.size(); i++) {
+     	  pair<TreeNode<int>*,int> temp  = helper(root -> children[i]);
+          if(temp.second > sum) {
+              ans = temp.first;
+              sum = temp.second;
+          }	
+    }
+    
+    return {ans,sum};
+    
+}
+
+
+TreeNode<int>* maxSumNode(TreeNode<int>* root) {
+    // Write your code here
+    if(root == NULL){
+        return 0 ;
+    }
+    else {
+        return helper(root).first;
+    }
+}

@@ -1,0 +1,11 @@
+TreeNode<int>* maxDataNode(TreeNode<int>* root) {
+    // Write your code here
+    static TreeNode<int>* m = new TreeNode<int>(-999999);
+    if(root->data > m->data){
+        m = root ; 
+    }
+    for(int i=0 ; i<root->children.size() ; i++) {
+        maxDataNode(root->children[i]) ;
+    }
+    return m ;
+}

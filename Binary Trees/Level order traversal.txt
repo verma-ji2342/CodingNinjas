@@ -1,0 +1,35 @@
+void printLevelWise(BinaryTreeNode<int> *root) {
+    // Write your code here
+    if(root == NULL){
+        return ;
+    }
+    
+    queue<BinaryTreeNode<int>*> pending ;
+    pending.push(root) ;
+    
+    pending.push(NULL) ;
+    
+    while(!pending.empty()){
+        BinaryTreeNode<int>* front = pending.front() ;
+        pending.pop() ;
+        
+        if(front == NULL){
+            if(pending.size() == 0){
+                return ;
+            }
+            else {
+                pending.push(NULL) ;
+                cout<<endl ;
+            }
+        }
+        else {
+            cout<<front->data<<" " ;
+            if(front->left != NULL){
+                pending.push(front->left) ;
+            }
+            if(front->right != NULL){
+                pending.push(front->right) ;
+            }
+        }
+    }
+}

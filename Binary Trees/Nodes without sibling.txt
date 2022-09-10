@@ -1,0 +1,17 @@
+void printNodesWithoutSibling(BinaryTreeNode<int> *root) {
+    // Write your code here
+    //corner case
+    if(root == NULL) {
+        return;
+    }
+    
+    if(root -> left == NULL and root -> right) {
+        cout << root -> right -> data << " ";
+    } else if (root -> left and root -> right == NULL) {
+        cout << root -> left -> data << " ";
+    }
+    
+    printNodesWithoutSibling(root -> left);
+    printNodesWithoutSibling(root -> right);
+  
+}

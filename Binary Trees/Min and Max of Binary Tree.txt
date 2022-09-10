@@ -1,0 +1,36 @@
+#include <climits>
+
+pair<int, int> getMinAndMax(BinaryTreeNode<int> *root) {
+	// Write your code here
+    int min, max ;
+    max = INT_MIN ;
+    min = INT_MAX ;
+    
+    queue<BinaryTreeNode<int>*>pending ;
+    pending.push(root) ;
+    
+    while(pending.size() != 0){
+        BinaryTreeNode<int>* front = pending.front() ;
+        pending.pop() ;
+        
+        if(front->data > max){
+            max = front->data ;
+        }
+        if(front->data < min){
+            min = front->data ;
+        }
+        
+        if(front->left != NULL){
+            pending.push(front->left) ;
+        }
+        if(front->right != NULL){
+            pending.push(front->right) ;
+        }
+    }
+    
+    pair<int,int> p ;
+    p.first = min ;
+    p.second = max ;
+    
+    return p ;
+}

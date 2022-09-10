@@ -1,0 +1,78 @@
+///////////////////////////  Verma Repo WELCOME you //////////////////////////
+-------------------------------------------------------------------------------------------
+
+// A stack is a ?
+
+ANS : B) LIFO (Last In First Out ) list.
+-------------------------------------------------------------------------------------------
+
+// Use recursion
+
+Which data structure is used for implementing recursion?
+
+ANS : B) Stack
+-------------------------------------------------------------------------------------------
+
+// Correct statement
+
+Which of the following statement(s) about stack data structure is/are NOT correct?
+
+ANS : C) Stack is the FIFO data structure 
+      D) New node can be added at both ends
+-------------------------------------------------------------------------------------------
+
+// Stack implementation
+
+Which of the following operation take worst case i.e. linear time (O(n))
+in the array implementation of stack?
+
+ANS : D) None 
+-------------------------------------------------------------------------------------------
+
+// Correct Order
+
+If the elements “p”, “q”, “r” and “s” are placed in a stack and are deleted one at 
+a time, in what order will they be removed?
+
+ANS : A) srqp
+-------------------------------------------------------------------------------------------
+
+// Queue
+
+A queue is a ?
+
+ANS : A) FIFO (First In First Out) list
+-------------------------------------------------------------------------------------------
+
+// Correct order
+
+If the elements “p”, “q”, “r” and “s” are placed in a queue and are deleted one at a time, 
+in what order will they be removed?
+
+ANS : B) pqrs
+-------------------------------------------------------------------------------------------
+
+// Insert element
+
+In optimized linked list implementation of a queue, where does a new element be inserted?
+
+ANS : B) At the tail of the linked list 
+-------------------------------------------------------------------------------------------
+
+// Worst case operation
+
+In linked list implementation of queue, if only front pointer is maintained, which of the 
+following operation take worst case time (i.e. O(n) )?
+
+ANS : A) Insertion fron rear 
+-------------------------------------------------------------------------------------------
+
+// Insert in queue
+
+In linked list implementation of a queue, front and rear pointers are tracked. Which of these 
+pointers will change during an insertion into EMPTY queue?
+
+ANS : C) Both front and rear pointer 
+-------------------------------------------------------------------------------------------
+
+

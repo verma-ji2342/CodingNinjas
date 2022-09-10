@@ -1,0 +1,37 @@
+#include<climits>
+TreeNode<int>* getNextLargerElement(TreeNode<int>* root, int x) {
+    // Write your code here
+    if(root->children.size() == 0){
+        if(root->data > x){
+            return root ;
+        }
+        else {
+            return NULL ;
+        }
+    }
+    
+    TreeNode<int>* node = root;
+    queue<TreeNode<int>*> pending ;
+    pending.push(root) ;
+    
+    int min = INT_MAX;
+    
+    while(!pending.empty()){
+        TreeNode<int>*temp = pending.front() ;
+        pending.pop() ;
+        
+        if((temp->data - x) < min && temp->data > x){
+            node = temp ;
+            min = temp->data - x ;
+        }
+        
+        for(int i=0 ; i<temp->children.size() ; i++){
+            pending.push(temp->children[i]) ;
+        }
+    }
+    if(node == root) {
+        return NULL;
+    } else {
+    	return node; 
+    }
+}

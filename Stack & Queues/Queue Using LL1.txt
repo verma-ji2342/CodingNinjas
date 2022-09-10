@@ -1,0 +1,59 @@
+class Stack {
+	// Define the data members
+   public:
+    Node *head, *tail ;
+    int size ;
+    Stack() {
+        // Implement the Constructor
+        head = NULL ;
+        tail = NULL ;
+        size = 0 ;
+    }
+
+	/*----------------- Public Functions of Stack -----------------*/
+
+    int getSize() {
+        // Implement the getSize() function
+        return size ;
+    }
+
+    bool isEmpty() {
+        // Implement the isEmpty() function
+        if(head == NULL) return 1 ;
+        else return 0 ;
+    }
+
+    void push(int element) {
+        // Implement the push() function'
+        if(head == NULL){
+            Node *temp = new Node(element) ;
+            head = temp ;
+            tail = temp ;
+            size ++ ;
+        }
+        else {
+            Node *temp = new Node(element) ;
+            temp->next = head ;
+            head = temp ;
+            size++ ;
+        }
+    }
+
+    int pop() {
+        // Implement the pop() function
+        if(head == NULL) return -1 ;
+        int p = head->data ;
+        Node *n = head->next ;
+        delete (head) ;
+        head = n ;
+        size-- ;
+        return p ;
+    }
+
+    int top() {
+        // Implement the top() function
+        if(head == NULL) return -1 ;
+        else 
+        return head->data ;
+    }
+};

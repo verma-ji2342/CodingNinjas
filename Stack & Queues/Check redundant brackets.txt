@@ -1,0 +1,23 @@
+#include  <stack>
+bool checkRedundantBrackets(string expression) {
+	// Write your code here
+    stack<char>s ;
+    int i=0 ;
+    while(expression[i] != '\0'){
+        if(expression[i] == '('){
+            s.push('(') ;
+        }
+        else if(expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/'){
+            s.push(expression[i]) ;
+        }
+        else if(expression[i] == ')') {
+            if(s.top() == '(') return 1;
+            while(s.top() == '+' || s.top() == '-' || s.top() == '*' || s.top() == '/'){
+                s.pop() ;
+            }
+            s.pop() ;
+        }
+        i++ ;
+    }
+    return 0;
+}

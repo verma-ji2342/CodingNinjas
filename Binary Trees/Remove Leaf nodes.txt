@@ -1,0 +1,16 @@
+BinaryTreeNode<int>* removeLeafNodes(BinaryTreeNode<int> *root) {
+    // Write your code here
+    if(root == NULL) {
+        return root;
+    }
+    // A node will be leaf if it has no children
+    if(!root -> left and !root -> right) {
+        return NULL;
+    }
+    
+    root -> left = removeLeafNodes(root -> left);
+    root -> right = removeLeafNodes(root -> right);
+    
+    return root;
+    
+}
